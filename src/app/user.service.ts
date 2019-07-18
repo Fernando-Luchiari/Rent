@@ -31,14 +31,14 @@ export class UserService {
     this.tokenTimer = setTimeout(() => {this.logout()} , duration * 1000);
   }
 
-  logout(){
+  logout() {
     this.authenticated.next(false);
     localStorage.removeAll();
     this.changeAdmin(0);
     this.router.navigate(['']);
   }
 
-  changeAdmin(active: any){
+  changeAdmin(active: any) {
 
   }
 

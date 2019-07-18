@@ -47,6 +47,16 @@
               placeHolder="Please give the seats">
             <mat-error *ngIf="seatsInput.invalid">Give the seats</mat-error>
           </mat-form-field>
+
+          <input #fileinput style="display: none" type="file" name="file" (change)="onFileSelected($event)">
+          <button matInput class="btn btn-outline-success" type="button" (click)="fileinput.click()">
+            Choose Image
+          </button>
+          <br><br>
+
+          <button mat-raised-button color="primary" type="submit">Create</button>
+
+
         </form>
       </mat-card-content>
     </mat-card>

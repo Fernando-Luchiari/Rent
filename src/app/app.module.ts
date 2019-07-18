@@ -60,7 +60,7 @@ import { HttpClientModule } from '@angular/common/http';
       {path: 'users', component: AdminUsersComponent}
     ])
   ],
-  providers: [UserService],
+  providers: [UserService, LoginComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

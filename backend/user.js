@@ -10,7 +10,7 @@ router.post('/signup', (req, res, next) => {
         const user = new User({
             email: req.body.email,
             password: hash,
-            admin: 0
+            isAdmin: 0
         })
         user.save().then(result => {
             return res.status(200).json({message: 'user signup'});
@@ -22,7 +22,7 @@ router.post('/signup', (req, res, next) => {
 });
 
 
-router.post('login',(req,res,next)=>{
+router.post('/login',(req,res,next)=>{
     let fetchUser;
     User.findOne({email: req.body.email}).then(user =>{
         fetchUser = user;
@@ -34,7 +34,7 @@ router.post('login',(req,res,next)=>{
         if(!result){
             return res.status(404).json({message: 'Auth failed!'});  
         }
-        let administrator = fetchUser.administrator;
+        let administrator = fetchUser.isAdmin;
         let token = jwt.sign({email: fetchUser.email,userid: fetchUser._id},'secret-long',{expiresIn: '1h'});
         return res.status(200).json({token: token,expiresIn: 3600,admin: administrator});
     }).catch(err =>{
@@ -42,5 +42,7 @@ router.post('login',(req,res,next)=>{
     });
 
 });
+
+
 module.exports = router;
 

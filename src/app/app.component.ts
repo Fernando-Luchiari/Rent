@@ -8,8 +8,8 @@ import { LoginComponent } from './login/login.component';
 })
 export class AppComponent implements OnInit {
   title = 'Rent';
-  constructor() {}
+  constructor(private login: LoginComponent) {}
 ngOnInit() {
-  //this.login.autoAuthUser();
+  this.login.autoAuthUser();
 }
 }
