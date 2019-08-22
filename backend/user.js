@@ -5,22 +5,6 @@ const User = require('./models/user');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
-router.post('/signup', (req, res, next) => {
-    bcrypt.hash(req.body.password,10).then(hash => {
-        const user = new User({
-            email: req.body.email,
-            password: hash,
-            isAdmin: 0
-        })
-        user.save().then(result => {
-            return res.status(200).json({message: 'user signup'});
-        }).catch(error => {
-            console.log(error);
-        })
-    })
-    
-});
-
 
 router.post('/login',(req,res,next)=>{
     let fetchUser;
@@ -42,6 +26,27 @@ router.post('/login',(req,res,next)=>{
     });
 
 });
+
+
+router.post('/signup', (req, res, next) => {
+    bcrypt.hash(req.body.password,10).then(hash => {
+        const user = new User({
+            email: req.body.email,
+            password: hash,
+            isAdmin: 0
+        })
+        user.save().then(result => {
+            return res.status(200).json({message: 'user signup'});
+        }).catch(error => {
+            console.log(error);
+        })
+    })
+    
+});
+
+
+
+
 
 
 module.exports = router;

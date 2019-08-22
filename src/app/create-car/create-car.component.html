@@ -3,7 +3,7 @@
     <mat-card>
       <mat-card-title>Create a car</mat-card-title>
       <mat-card-content>
-        <form (submit)="onCreate"#createform="ngForm">
+        <form (submit)="onCreate(createForm)"#createForm="ngForm">
           <mat-form-field>
             <input matInput
               type="text"

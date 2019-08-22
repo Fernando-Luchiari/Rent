@@ -1,9 +1,12 @@
 const express = require('express');
 const multer  = require('multer');
-const User = require('./models/car');
+const Car = require('./models/car');
+const User = require('./models/user');
 const router = express.Router();
+const mongodb = require('mongodb');
 
 const storage = multer.diskStorage({
+    
     destination: function (req,file,cb){
         cb(null,'./uploads')
     },
@@ -33,6 +36,26 @@ router.post('/create-car', (req,res,next) => {
     }).catch(error => {
         console.log(error);
     })
+});
+
+router.get('/users', (req,res,next) =>{
+    User.find({}, 'email isAdmin _id').then(user => {
+        if(!user){
+            return res.status(404).json({message: 'no users found'}); 
+        }
+        return res.status(200).json(user);        
+    }).catch(error => {
+        console.log(error);
+    });
+});
+
+router.delete("/user/:id", (req,res,next) => {
+    User.deleteOne({_id: new mongodb.ObjectID(req.params.id)}).then(result =>{
+        return res.status(200).json({message: 'user deleted'});
+    }).catch(error => {
+        console.log(error);
+    });
+
 });
 
 module.exports = router;

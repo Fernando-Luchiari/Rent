@@ -22,6 +22,7 @@ import { DatepickerComponent } from './datepicker/datepicker.component';
 import { AdminUsersComponent } from './admin-users/admin-users.component';
 import { UserService } from './user.service';
 import { HttpClientModule } from '@angular/common/http';
+import { AdminService } from './admin.service';
 
 
 @NgModule({
@@ -60,7 +61,7 @@ import { HttpClientModule } from '@angular/common/http';
       {path: 'users', component: AdminUsersComponent}
     ])
   ],
-  providers: [UserService, LoginComponent],
+  providers: [UserService, LoginComponent, AdminService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
