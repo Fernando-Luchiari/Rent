@@ -14,15 +14,11 @@
       </mat-form-field>
 
       <mat-form-field>
-        <textarea matInput 
-        placeholder="Password" 
-        name="password" 
-        ngModel
-        required
-        #passwordInput="ngModel"        
-        >
-      </textarea>
-      <mat-error *ngIf="passwordInput.invalid">Por favor preencha o campo!</mat-error></mat-form-field>
+          <input matInput
+                 placeholder="Password"
+                 name="password"
+                 ngModel>
+      </mat-form-field>
       <button class="btn btn-primary" type="submit">Login</button>
     </form>
   </mat-card>

@@ -19,4 +19,17 @@ export class AdminService {
     deleteUser(id: any) {
         return this.http.delete('http://localhost:3000/api/admin/user/' + id);
     }
+
+    adminUser(id: any) {
+        const data = {id: id};
+        return this.http.post('http://localhost:3000/api/admin/admin-user', data);
+    }
+
+    rentedCar() {
+        return this.http.get('http://localhost:3000/api/admin/rented-cars');
+    }
+
+    cancelReservation(id: any) {
+        return this.http.delete('http://localhost:3000/api/admin/cancel-reservation' + id);
+    }
 }

@@ -19,10 +19,12 @@ import { MainPageComponent } from './main-page/main-page.component';
 
 import { ManageReservationsComponent } from './manage-reservations/manage-reservations.component';
 import { DatepickerComponent } from './datepicker/datepicker.component';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { AdminUsersComponent } from './admin-users/admin-users.component';
 import { UserService } from './user.service';
 import { HttpClientModule } from '@angular/common/http';
 import { AdminService } from './admin.service';
+
 
 
 @NgModule({
@@ -45,6 +47,7 @@ import { AdminService } from './admin.service';
     MatFormFieldModule,
     FormsModule,
     MatInputModule,
+    BsDatepickerModule.forRoot(),
     BrowserAnimationsModule,
     MatCardModule,
     MatToolbarModule,

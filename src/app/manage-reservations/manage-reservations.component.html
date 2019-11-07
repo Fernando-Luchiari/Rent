@@ -6,25 +6,27 @@
       <!-- Position Column -->
       <ng-container matColumnDef="car_id">
         <th mat-header-cell *matHeaderCellDef> Car ID </th>
-        <td mat-cell *matCellDef="let element"> {{element.car_id}} </td>
+        <td mat-cell *matCellDef="let element"> {{element?.car_id}} </td>
       </ng-container>
   
       <!-- Name Column -->
       <ng-container matColumnDef="reserved_from">
         <th mat-header-cell *matHeaderCellDef> Reserved From </th>
-        <td mat-cell *matCellDef="let element"> {{element.reserved_from}} </td>
+        <td mat-cell *matCellDef="let element"> {{element?.reserved_from| date: 'dd-MM-yyyy'}} </td>
       </ng-container>
   
       <!-- Weight Column -->
       <ng-container matColumnDef="reserved_till">
         <th mat-header-cell *matHeaderCellDef> Reserved Till </th>
-        <td mat-cell *matCellDef="let element"> {{element.reserved_till}} </td>
+        <td mat-cell *matCellDef="let element"> {{element?.reserved_till| date: 'dd-MM-yyyy'}} </td>
       </ng-container>
   
       <!-- Symbol Column -->
       <ng-container matColumnDef="cancel">
-        <th mat-header-cell *matHeaderCellDef> Cancel </th>
-        <td mat-cell *matCellDef="let element"> {{element.cancel}} </td>
+        <th mat-header-cell *matHeaderCellDef> Cancel Reservation</th>
+        <td mat-cell *matCellDef="let element">
+          <button (click)="onCancel(element.id)" class="btn btn-outline-danger mr-1">Cancel</button>
+        </td>
       </ng-container>
   
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

@@ -9,7 +9,8 @@ export class UserService {
   tokenTimer: any;
   isAdmin = new Subject();
   authenticated = new BehaviorSubject(false);
-
+  selectedCars = new Subject();
+  path = 'http://localhost:3000/uploads/';
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -55,6 +56,16 @@ export class UserService {
       expiration: new Date(expiration),
       admin: admin
     }
+  }
+
+  getCars(from: any, until: any){
+    const date = {from: from,until: until};
+    return this.http.post('http://localhost:3000/api/admin/cars', date);
+  }
+
+  rentCar(id: any, until: any, from: any, fromDate: any, untilDate: any){
+    const rentData={car_id: id, from: from, until: until, fromDate: fromDate, untilDate: untilDate};
+    return this.http.post('http://localhost:3000/api/admin/rent', rentData);
   }
 
 }
